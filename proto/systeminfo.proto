@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package recordMySystem_grpc;
+option go_package="recordMySystem-grpc";
+
+message SystemInfoReq{
+    string id=1;
+    string hostName =2;
+    float  cpuPercentage=3;
+    float  memoryUsage=4;
+    float  temperature=5;
+    float    batteryPercentage=6;
+}
+
+message SystemInfoRes{
+    string message=1;
+}
+
+service RecordMySystem{
+    rpc Store(stream SystemInfoReq) returns(SystemInfoRes) {}
+}
